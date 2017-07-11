@@ -33,8 +33,16 @@
         try
         {
             header("content-type:image/jpg"); 
-            $imageId=GetLoggedUserId();
-            GetImage($imageId);
+            if(isset($_GET["ImageId"]))
+            {
+               $imageId=$_GET["ImageId"];
+               GetImage($imageId);
+            }else
+             {      
+                $imageId=GetLoggedUserId();
+                GetImage($imageId);
+             }
+       
         }catch(Exception $e)
         {  
         header('Location: /Profile.html');
@@ -46,7 +54,7 @@
         
         require '../ConnectDb.php';
         
-        $sql="INSERT INTO `id2069973_gadvede`.`user_images` 
+        $sql="INSERT INTO `id827711_rmanager`.`user_images` 
             VALUES('$imageId','$UserId','$imageType','$imageName','{$imageData}')";
     
         if($connect->query($sql)==TRUE)
@@ -57,7 +65,7 @@
     
         require '../ConnectDb.php';
         
-        $sql="UPDATE `id2069973_gadvede`.`user_images` 
+        $sql="UPDATE `id827711_rmanager`.`user_images` 
                SET
                 `ImageType` = '$imageType',
                 `ImageName` = '$imageName',
@@ -71,7 +79,7 @@
     function GetImage($UserId){
         require '../ConnectDb.php';
         $imageData;
-        $sql="SELECT * FROM `id2069973_gadvede`.`user_images`  WHERE UserId='$UserId'";
+        $sql="SELECT * FROM `id827711_rmanager`.`user_images`  WHERE UserId='$UserId'";
         //$sql="select * from a5780612_roomman.output_images";
         $result=$connect->query($sql);
         if($result->num_rows>0)
@@ -80,7 +88,7 @@
              $imageData=$row["ImageContent"];
         }
         else{
-             $sql="SELECT * FROM `id2069973_gadvede`.`user_images`  WHERE UserId='{AC0333B9-1F26-8F19-D237-B8760329D442}'";
+             $sql="SELECT * FROM `id827711_rmanager`.`user_images`  WHERE UserId='1'";
              $result=$connect->query($sql);
              while($row=$result->fetch_array())
                  $imageData=$row["ImageContent"];
@@ -92,7 +100,7 @@
     
         require '../ConnectDb.php';
         
-        $sql="SELECT * FROM `id2069973_gadvede`.`user_images` WHERE `UserId`='$UserId'";
+        $sql="SELECT * FROM `id827711_rmanager`.`user_images` WHERE `UserId`='$UserId'";
         $result=$connect->query($sql);
         if($result->num_rows>0)
            return true;

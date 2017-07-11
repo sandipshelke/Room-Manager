@@ -53,18 +53,51 @@ myApp.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
                           
           }) 
         .controller("AddExpController", function ($scope,$http) {
-              $scope.addexpenses=function(){
+            $scope.exp = {};
+            $scope.setActionId=function(GroupId) {
+               $scope.groupId=GroupId;
+              }
+            $scope.setMonthId=function(MonthId) {
+               $scope.monthId=MonthId;
+              }
+            $scope.getGroups=function(){
+                $http({
+                            method : "GET",
+                            url : "php/group/activegroups.php"
+                        })
+                        .then(function mySuccess(response) {
+                            $scope.Groups = response.data.ActiveList;
+                        }, function myError(response) {
+                            Materialize.toast(response.data.ErrorInfo.ErrorMessage, 2000);;
+                        });
+                }
+            $scope.GetExpData=function(){
                   $http({
                                 method : "POST",
-                                url : "php/group/creategrp.php",
-                                data: { GroupName:$scope.gname,GroupType:$scope.gtype,AdminEmail:$scope.gemail,GroupDisc:$scope.gdisc }
+                                url : "php/expenses/getexpdata.php",
+                                data: {MonthId: $scope.monthId, GroupId: $scope.groupId }
                             }).then(function mySuccess(response) {
-                                Materialize.toast(response.data.Message, 2000);
+                                $scope.AllExp=response.data.AllExpList;
                             }, function myError(response) {
-                                Materialize.toast(response.data.ErrorInfo, 2000);
+                                Materialize.toast(response.data.ErrorInfo.ErrorMessage, 2000);
                             });
                         }
                             
+            $scope.AddIndExpenses=function(memberid,rent,lbill,internet,other,reason){
+                $http({
+                            method : "POST",
+                            url : "php/expenses/addindexp.php",
+                            data: { 
+                                    MemberId:memberid,MonthId:$scope.monthId, GroupId:$scope.groupId,
+                                    RoomRent:rent, LightBill:lbill,Internet:internet,
+                                    Other:other,Reason:reason
+                                  }
+                        }).then(function mySuccess(response) {
+                           Materialize.toast(response.data.Message, 2000);
+                        }, function myError(response) {
+                            Materialize.toast(response.data.ErrorInfo.ErrorMessage, 2000);
+                        });
+                  }
           })   
         .controller("UpdExpController", function ($scope,$http) {
               $scope.updexpenses=function(){
@@ -81,17 +114,37 @@ myApp.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
                             
          })   
         .controller("GetExpController", function ($scope,$http) {
-              $scope.getExpenses=function(){
-                  $http({
-                                method : "POST",
-                                url : "php/group/creategrp.php",
-                                data: { GroupName:$scope.gname,GroupType:$scope.gtype,AdminEmail:$scope.gemail,GroupDisc:$scope.gdisc }
-                            }).then(function mySuccess(response) {
-                                Materialize.toast(response.data.Message, 2000);
-                            }, function myError(response) {
-                                Materialize.toast(response.data.ErrorInfo, 2000);
-                            });
-                        }
+            $scope.showExpTable=false;
+            $scope.setActionId=function(GroupId) {
+               $scope.groupId=GroupId;
+              }
+            $scope.setMonthId=function(MonthId) {
+               $scope.monthId=MonthId;
+              }
+            $scope.getGroups=function(){
+                $http({
+                            method : "GET",
+                            url : "php/group/activegroups.php"
+                        })
+                        .then(function mySuccess(response) {
+                            $scope.Groups = response.data.ActiveList;
+                        }, function myError(response) {
+                            Materialize.toast(response.data.ErrorInfo.ErrorMessage, 2000);;
+                        });
+                }
+           
+            $scope.getExpenses=function(){
+                $http({
+                            method : "POST",
+                            url : "php/expenses/getallexpenses.php",
+                            data: { GroupId:$scope.groupId,MonthId:$scope.monthId }
+                        }).then(function mySuccess(response) {
+                            $scope.Expenses=response.data.ExpensesList;
+                             $scope.showExpTable=true;
+                        }, function myError(response) {
+                            Materialize.toast(response.data.ErrorInfo.ErrorMessage, 2000);
+                        });
+                    }
                             
           })   
         .controller("RemExpController", function ($scope,$http) {
@@ -140,7 +193,7 @@ myApp.config(function($stateProvider,$locationProvider,$urlRouterProvider) {
                 $http({
                             method : "POST",
                             url : "php/expenses/addcomexp.php",
-                            data: {MonthId:$scope.month, GroupId:$scope.groupId,RoomRent:$scope.CExp.RoomRent, LightBill:$scope.CExp.LightBill,Internet:$scope.CExp.Internet}
+                            data: { MonthId:$scope.month, GroupId:$scope.groupId,RoomRent:$scope.CExp.RoomRent, LightBill:$scope.CExp.LightBill,Internet:$scope.CExp.Internet}
                         }).then(function mySuccess(response) {
                            Materialize.toast(response.data.Message, 2000);
                         }, function myError(response) {

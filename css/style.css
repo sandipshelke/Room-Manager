@@ -232,4 +232,7 @@ _:-ms-input-placeholder, :root .demo-graph {
 .expbox{    border: 1px solid #4CAF50 !important;padding-left: 5px !important;}
 .quickaction{cursor:pointer;}
 .userinfo>tbody{overflow-y: scroll;}
+.modal-overlay{display: none !important;}
+.expbox{width:60px;}
+
 

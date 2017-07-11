@@ -7,13 +7,28 @@
       <a ui-sref="expenses.getexp()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Get All Expenses"> <i class="material-icons">attach_money</i></a>
     </div>
    <div class="row">
-        <div class="GroupContent col m8" ui-view="childmain">
-           <div class="exp_base_class">
-              
-           </div>
-        </div>
-        <div class="ExpSideContent col m4">
-           
+        <div class="GroupContent col m10" ui-view="childmain">
+            <div class="">
+                <div class="card-panel">Select Default group and month to Add/Update Expenses.</div>
+                <form class="col s12 m8" name="myForm" ng-submit="RemoveMember()">
+                    <div class="row">
+                      <div class="input-field col m8 s12">
+                          <div input-field>
+                              <i class="material-icons prefix">group_add</i>
+                              <select ng-model="groupId" ng-change="setActionId(groupId);GetMember()" material-select watch>
+                                  <option value="" ng-selected>Select group</option>
+                                  <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
+                              </select>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Set-Default
+                          <i class="material-icons right">delete</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
    </div>
 </div>

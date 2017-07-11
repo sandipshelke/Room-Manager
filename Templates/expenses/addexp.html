@@ -1,25 +1,61 @@
  
  <div class="row">
     <div class="col s12 m10">
-        <form class="col s12" name="myForm" ng-submit="createGrp()">
+        <form class="col s12" name="myForm" ng-init="getGroups()" ng-submit="GetExpData()">
           <div class="row">
-            <div class="input-field col m8 s12">
+            <div class="input-field col m6 s12">
                 <div input-field>
                     <i class="material-icons prefix">group_add</i>
-                    <select ng-model="groupId" ng-change="getGroupInfo(groupId)" material-select watch>
-                        <option value="" ng-selected>Select Member</option>
+                    <select ng-model="groupId" ng-change="setActionId(groupId);" material-select watch>
+                        <option value="" ng-selected>Select Group</option>
                         <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
                     </select>
                 </div>
             </div>
+            <div class="input-field col m6 s12">
+              <div input-field>
+                  <i class="material-icons prefix">date_range</i>
+                  <select ng-model="MonthId" ng-change="setMonthId(MonthId)">
+                      <option value=""  selected>Choose Month.</option>
+                      <option value="1">January</option>
+                      <option value="2">February</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">Jun</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">Septeber</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                  </select>
+            </div>
           </div>
           <div class="row">
-              <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" ng-disabled="myForm.$invalid">Add
+              <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Get-Data
                 <i class="material-icons right">send</i>
               </button>
           </div>
         </form>
     </div>
+  </div>
+  <div class="row">
+      <table >
+        </thead>
+          <tbody>
+            <tr ng-repeat="exp in AllExp" >
+              <td >{{exp.MemberName}}</td>
+              <td ><input type="text" class="expbox" placeholder="Roomrent" ng-model="exp.RoomRent" ></td>
+              <td ><input type="text" class="expbox" placeholder="Lightbill" ng-model="exp.LightBill"></td>
+              <td ><input type="text" class="expbox" placeholder="Internet" ng-model="exp.Internet"></td>
+              <td ><input type="text" class="expbox" placeholder="Other" ng-model="exp.Other"></td>
+              <td ><input type="text" class="expbox" placeholder="Reason" ng-model="exp.Reason"></td>
+              <td id="{{exp.MemberId}}"><i class="material-icons quickaction" ng-click="AddIndExpenses(exp.MemberId,exp.RoomRent,exp.LightBill,exp.Internet,exp.Other,exp.Reason)">check</i></td>
+              <td id="{{exp.MemberId}}"><i class="material-icons quickaction">delete</i></td>
+            </tr>
+          </tbody>
+      </table>
   </div>
 <script>
   $(document).ready(function() {

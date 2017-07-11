@@ -19,27 +19,21 @@
     </form>
     <div class="row" ng-show="isResLoaded">
         <div class="col s12 m12">
-            <table class="bordered centered highlight scroll">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>EmailId</th>
-                    <th>Birthdate</th>
-                    <th>Mobile</th>
-                </tr>
-                </thead>
-                <tbody >
-                  <tr ng-repeat="user in Users">
-                      <td contenteditable="true" class="MemberInfo" id="MemberName">{{user.MemberName}}</td>
-                      <td contenteditable="true" id="UserMail">{{user.UserMail}}</td>
-                      <td contenteditable="true" id="BirthDate">{{user.BirthDate}}</td>
-                      <td contenteditable="true" id="UserMobile">{{user.UserMobile}}</td>
-                      <td><i class="material-icons quickaction" id="{{user.MemberId}}" ng-click="updateMember()">done</i></td>
-                      <td><i class="material-icons quickaction" id="{{user.MemberId}}">delete_forever</i></td>
-                  </tr>
-                </tbody>
-            </table>
+            <div class="col s12 m6"  ng-repeat="user in Users">
+                <div class="card-panel grey lighten-5 z-depth-1">
+                <div class="row valign-wrapper " data-target="modal1" class="">
+                    <div class="col s2">
+                    <img src="php/profile/images.php?ImageId={{user.MemberId}}" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s10">
+                    <span class="black-text">
+                       <h6>{{user.MemberName}}</h6>
+                       <span class="blue-text email">{{user.UserMail}}</span>
+                    </span>
+                    </div>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
   </div>
- 
