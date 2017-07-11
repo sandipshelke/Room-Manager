@@ -1,0 +1,34 @@
+ <div class="row" ng-init="getGroups()">
+    <form class="col s12 m8" name="myForm" ng-submit="AddMember()">
+      <div class="row">
+        <div class="input-field col m8 s12">
+            <div input-field>
+                <i class="material-icons prefix">group_add</i>
+                <select ng-model="groupId" ng-change="setActionId(groupId)" material-select watch>
+                    <option value="" ng-selected>Select group</option>
+                    <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m8 s12">
+          <i class="material-icons prefix">person_add</i>
+          <input id="icon_prefix" type="text" class="validate"  ng-model="fname" placeholder="Member name">
+          <label for="icon_prefix"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m8 s12">
+          <i class="material-icons prefix">mail</i>
+          <input id="icon_prefix" type="text" class="validate" ng-model="email" placeholder="Member email">
+          <label for="icon_prefix"></label>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Add
+            <i class="material-icons right">add</i>
+          </button>
+      </div>
+    </form>
+  </div>

@@ -1,0 +1,45 @@
+<div class="row" ng-init="getGroups()">
+    <form class="col s12 m8" name="myForm" ng-submit="GetMember()">
+      <div class="row">
+        <div class="input-field col m8 s12">
+            <div input-field>
+                <i class="material-icons prefix">group_add</i>
+                <select ng-model="groupId" ng-change="setActionId(groupId)" material-select watch>
+                    <option value="" ng-selected>Select group</option>
+                    <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Get Members
+            <i class="material-icons right">arrow_forward</i>
+          </button>
+      </div>
+    </form>
+    <div class="row" ng-show="isResLoaded">
+        <div class="col s12 m12">
+            <table class="bordered centered highlight scroll">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>EmailId</th>
+                    <th>Birthdate</th>
+                    <th>Mobile</th>
+                </tr>
+                </thead>
+                <tbody >
+                  <tr ng-repeat="user in Users">
+                      <td contenteditable="true" class="MemberInfo" id="MemberName">{{user.MemberName}}</td>
+                      <td contenteditable="true" id="UserMail">{{user.UserMail}}</td>
+                      <td contenteditable="true" id="BirthDate">{{user.BirthDate}}</td>
+                      <td contenteditable="true" id="UserMobile">{{user.UserMobile}}</td>
+                      <td><i class="material-icons quickaction" id="{{user.MemberId}}" ng-click="updateMember()">done</i></td>
+                      <td><i class="material-icons quickaction" id="{{user.MemberId}}">delete_forever</i></td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+ 

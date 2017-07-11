@@ -1,0 +1,12 @@
+<div>
+    <a ui-sref="members.allmem()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="All Members"><i class="material-icons">people</i></a>
+    <a ui-sref="members.addmem()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored  btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add Member"><i class="material-icons">person_add</i></a>
+    <a ui-sref="members.remmem()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Remove Member"><i class="material-icons">delete_sweep</i></a>
+    <div class="GroupContent" ui-view="childmain">
+    </div>
+</div>
+<script>
+ $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>

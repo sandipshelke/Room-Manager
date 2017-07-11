@@ -1,0 +1,31 @@
+<div class="row" ng-init="getGroups();">
+    <form class="col s12 m8" name="myForm" ng-submit="RemoveMember()">
+      <div class="row">
+        <div class="input-field col m8 s12">
+            <div input-field>
+                <i class="material-icons prefix">group_add</i>
+                <select ng-model="groupId" ng-change="setActionId(groupId);GetMember()" material-select watch>
+                    <option value="" ng-selected>Select group</option>
+                    <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m8 s12">
+            <div input-field>
+                <i class="material-icons prefix">group_add</i>
+                <select ng-model="memberid" ng-change="setActionId(memberid)" material-select watch>
+                    <option value="" ng-selected>Select member</option>
+                    <option ng-repeat="user in Users" value="{{user.MemberId}}">{{user.MemberName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Remove
+            <i class="material-icons right">delete</i>
+          </button>
+      </div>
+    </form>
+</div>

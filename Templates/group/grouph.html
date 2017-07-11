@@ -1,0 +1,16 @@
+
+<div class="linkheader">
+    <a ui-sref="group.create()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add Group"><i class="material-icons">library_add</i></a>
+    <a ui-sref="group.update()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Update Group"><i class="material-icons">edit</i></a>
+    <a ui-sref="group.leave()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Leave Group"><i class="material-icons">directions_run</i></a>
+    <a ui-sref="group.active()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Active Group"><i class="material-icons">power</i></a>
+    <a ui-sref="group.remove()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Remove Group"><i class="material-icons">clear</i></a>
+ 
+    <div class="GroupContent" ui-view="childmain">
+    </div>
+</div>
+<script>
+ $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>

@@ -1,0 +1,28 @@
+ <div class="row" ng-init="getGroups()">
+     <div class="row">
+      <div class="col s12 m8">
+         <div class="card-panel">
+             <i class="material-icons">delete_sweep</i>
+              <span class="red-text text-darken-2">You need administrator permission to delete this group.</span>
+         </div>
+      </div>
+    </div>
+    <form class="col s12" name="myForm" ng-submit="removeGroup()">
+      <div class="row">
+        <div class="input-field col m8 s12">
+            <div input-field>
+                <i class="material-icons prefix">group_add</i>
+                <select ng-model="groupId" ng-change="setActionId(groupId)" material-select watch>
+                    <option value="" ng-selected>Select group to remove</option>
+                    <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Remove
+            <i class="material-icons right">clear</i>
+          </button>
+      </div>
+    </form>
+  </div>

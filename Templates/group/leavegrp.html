@@ -1,0 +1,27 @@
+ <div class="row" ng-init="getGroups()">
+    <form class="col s12 m8" name="myForm" ng-submit="leaveGroup()">
+      <div class="row">
+        <div class="input-field col m8 s12">
+            <div input-field>
+                <i class="material-icons prefix">group_add</i>
+                <select ng-model="groupId" ng-change="setActionId(groupId)" material-select watch>
+                    <option value="" ng-selected>Select group to Leave</option>
+                    <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col  s12">
+          <i class="material-icons prefix">content_copy</i>
+          <textarea id="textarea1" class="materialize-textarea"  ng-model="reason" placeholder="Reason"></textarea>
+          <label for="textarea1"></label>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Leave
+            <i class="material-icons right">redo</i>
+          </button>
+      </div>
+    </form>
+  </div>

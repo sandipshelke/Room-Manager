@@ -1,0 +1,89 @@
+
+  <div class="row">
+    <form class="col s12 m8" name="myForm" ng-submit="createGrp()">
+      <div class="row">
+        <div class="input-field col m8 s12">
+          <i class="material-icons prefix">group_add</i>
+          <input id="icon_prefix" type="text" class="validate" ng-model="gname" placeholder="Group name">
+          <label for="icon_prefix"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m8 s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate" ng-model="gemail" placeholder="Admin email">
+          <label for="icon_prefix"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m8 s12">
+          <i class="material-icons prefix">art_track</i>
+          <select ng-model="gtype">
+            <option value="" selected>Select group type</option>
+            <option value="Pr">Private</option>
+            <option value="Fr">Friends</option>
+            <option value="Fm">Family</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col  s12">
+          <i class="material-icons prefix">content_copy</i>
+          <textarea id="textarea1" class="materialize-textarea" ng-model="gdisc" placeholder="Discription"></textarea>
+          <label for="textarea1"></label>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" ng-disabled="myForm.$invalid">CREATE
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+    </form>
+  </div>
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
+
+
+
+
+<!--<div class="col-md-12 col-lg-12 " >
+    <div class="col-md-12 col-lg-12 ext-class">
+        <form class="formclass" name="myForm">
+            <fieldset>
+            <legend>CREATE-GROUP</legend>    
+                <div class="form-group" >
+                    <label for="gname">Group-Name</label>
+                    <input type="text" ng-model="gname" placeholder="group-name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="gname">Group-Type</label>
+                    <select class="form-control" aria-placeholder="select groip" ng-model="gtype"  required>
+                        <option value="fr" selected>Friend's</option>
+                        <option value="fm">Family</option>
+                        <option value="pr">Private</option>
+                    </select>
+                </div>
+                <div class="form-group leftinput col-md-6" >
+                    <label for="gcount">Group-Count</label>
+                    <input type="number" ng-model="gcount" class="form-control" placeholder="member-count" required>
+                </div>
+                <div class="form-group rightinput col-md-6">
+                    <label for="aemail">Admin-Email</label>
+                    <input type="email" ng-model="gemail" class="form-control" placeholder="admin-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="disc">Group-Discription</label>
+                    <textarea rows="5" cols="" class="form-control" ng-model="gdisc" placeholder="min 50 character" required></textarea>
+                </div>
+                <button class="btn btn-primary btn-sm" type="submit" ng-disabled="myForm.$invalid" ng-click="createGrp()">CREATE</button>
+                <button class="btn btn-danger btn-sm" >CANCEL</button>
+            </fieldset>
+        </form>
+    </div>
+</div>  -->
+
+

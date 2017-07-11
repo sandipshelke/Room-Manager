@@ -1,0 +1,24 @@
+<div>
+    <div class="toolbox">
+      <a ui-sref="expenses.comexp()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Common Expenses"> <i class="material-icons">group</i></a>
+      <a ui-sref="expenses.addexp()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Add Expenses">  <i class="material-icons">add</i></a>
+      <a ui-sref="expenses.updexp()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Update Expenses"> <i class="material-icons">mode_edit</i></a>
+      <a ui-sref="expenses.remexp()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Remove Expenses"> <i class="material-icons">delete</i></a>
+      <a ui-sref="expenses.getexp()"  class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Get All Expenses"> <i class="material-icons">attach_money</i></a>
+    </div>
+   <div class="row">
+        <div class="GroupContent col m8" ui-view="childmain">
+           <div class="exp_base_class">
+              
+           </div>
+        </div>
+        <div class="ExpSideContent col m4">
+           
+        </div>
+   </div>
+</div>
+<script>
+ $(document).ready(function(){
+    $('.tooltipped').tooltip({delay: 50});
+  });
+</script>

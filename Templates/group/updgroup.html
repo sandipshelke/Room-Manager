@@ -1,0 +1,47 @@
+
+  <div class="row" ng-init="getGroups()">
+    <form  name="myForm" class="col s12 m8" ng-submit="updateGrp()">
+      <div class="row">
+        <div class="input-field col m8 s12">
+            <div input-field>
+                <i class="material-icons prefix">group_add</i>
+                <select ng-model="groupId" ng-change="getGroupInfo(groupId)" material-select watch>
+                    <option value="" ng-selected>Select group to update</option>
+                    <option ng-repeat="group in Groups" value="{{group.GroupId}}">{{group.GroupName}}</option>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m8 s12">
+          <i class="material-icons prefix">group_add</i>
+          <input id="icon_prefix" type="text" class="validate" ng-model="GroupData.GroupName" placeholder="Group name">
+          <label for="icon_prefix"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col m8 s12">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="icon_prefix" type="text" class="validate" ng-model="GroupData.AdminEmail" placeholder="Admin email">
+          <label for="icon_prefix"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col  s12">
+          <i class="material-icons prefix">content_copy</i>
+          <textarea id="textarea1" class="materialize-textarea"  ng-model="GroupData.GroupDisc" placeholder="Discription"></textarea>
+          <label for="textarea1"></label>
+        </div>
+      </div>
+      <div class="row">
+          <button class="btn waves-effect waves-lightm grpbtn" type="submit" name="action" >Update
+            <i class="material-icons right">send</i>
+          </button>
+      </div>
+    </form>
+  </div>
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
